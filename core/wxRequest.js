@@ -1,15 +1,10 @@
 /**
  * Created by J.Son on 2019/1/29
  */
-/**
- * Created by J.Son on 2019/1/29
- */
 'use strict';
 
-// var utils = require('./../utils');
-// var settle = require('./../core/settle');
-// var buildURL = require('./../helpers/buildURL');
-// var createError = require('../core/createError');
+const utils = require('./utils');
+const buildURL = require('./helpers/buildURL');
 
 function wxAdapter (config) {
   return new Promise(function dispatchWxRequest (resolve, reject) {
@@ -26,7 +21,6 @@ function wxAdapter (config) {
         config: config,
         request: RequestTask
       };
-      console.log(response);
       settle(resolve, reject, response);
 
       // Clean up request
@@ -108,7 +102,7 @@ function wxAdapter (config) {
 
     // Send the request
     var RequestTask = wx.request({
-      url: config.url,
+      url: buildURL(config.url, config.params, config.paramsSerializer),
       method: config.method.toUpperCase(),
       data: requestData,
       header: requestHeaders,
@@ -145,5 +139,22 @@ function settle(resolve, reject, response) {
   }
 };
 
+
+const enhanceError = require('./enhanceError');
+
+/**
+ * Create an Error with the specified message, config, error code, request and response.
+ *
+ * @param {string} message The error message.
+ * @param {Object} config The config.
+ * @param {string} [code] The error code (for example, 'ECONNABORTED').
+ * @param {Object} [request] The request.
+ * @param {Object} [response] The response.
+ * @returns {Error} The created error.
+ */
+function createError(message, config, code, request, response) {
+  const error = new Error(message);
+  return enhanceError(error, config, code, request, response);
+};
 module.exports = exports = wxAdapter;
 module.exports.default = wxAdapter;
