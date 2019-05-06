@@ -1,9 +1,9 @@
 /**
  * Created by J.Son on 2019/1/29
  */
-const InterceptorManager = require('./InterceptorManager');
-const mergeConfig = require('./mergeConfig');
-const dispatchRequest = require('./dispatchRequest');
+import InterceptorManager from "./InterceptorManager";
+import mergeConfig from "./mergeConfig";
+import dispatchRequest from "./dispatchRequest";
 class Request {
   interceptors = {
     request: new InterceptorManager(),
@@ -52,5 +52,4 @@ class Request {
     }));
   };
 });
-module.exports = exports = Request;
-module.exports.default = Request;
+export default Request

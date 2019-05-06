@@ -2,10 +2,9 @@
  * Created by J.Son on 2019/1/29
  */
 'use strict';
-
-const utils = require('./utils');
-const buildURL = require('./helpers/buildURL');
-
+import utils from "./utils";
+import { buildURL} from "./helpers/buildURL";
+import enhanceError from "./enhanceError";
 function wxAdapter (config) {
   return new Promise(function dispatchWxRequest (resolve, reject) {
     var requestData = config.data;
@@ -140,8 +139,6 @@ function settle(resolve, reject, response) {
 };
 
 
-const enhanceError = require('./enhanceError');
-
 /**
  * Create an Error with the specified message, config, error code, request and response.
  *
@@ -156,5 +153,4 @@ function createError(message, config, code, request, response) {
   const error = new Error(message);
   return enhanceError(error, config, code, request, response);
 };
-module.exports = exports = wxAdapter;
-module.exports.default = wxAdapter;
+export default wxAdapter

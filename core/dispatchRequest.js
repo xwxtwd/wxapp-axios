@@ -1,7 +1,7 @@
 /**
  * Created by J.Son on 2019/1/29
  */
-const defaults = require('./defaults');
+import defaults from "./defaults";
 function dispatchRequest (config) {
   throwIfCancellationRequested(config);
   // Support baseURL config
@@ -114,5 +114,4 @@ function isCancel(value) {
   return !!(value && value.__CANCEL__);
 };
 
-module.exports = exports = dispatchRequest;
-module.exports.default = dispatchRequest;
+export default dispatchRequest

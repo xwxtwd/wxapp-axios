@@ -1,8 +1,8 @@
 /**
  * Created by J.Son on 2019/1/29
  */
-const Request = require('./RequestFactory');
-var defaults = require('./defaults');
+import Request from "./RequestFactory";
+import defaults from "./defaults";
 
 /**
  * Create an instance of Request
@@ -30,8 +30,8 @@ request.create = function create (instanceConfig) {
 request.all = function all (promises) {
   return Promise.all(promises);
 };
-module.exports = exports = request;
-module.exports.default = request;
+
+export default request
 
 /**
  * Extends object a by mutably adding to it the properties of object b.

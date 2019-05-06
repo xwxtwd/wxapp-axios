@@ -1,6 +1,5 @@
 'use strict';
-
-var bind = require('./helpers/bind');
+import { bind } from "./helpers/bind";
 
 /*global toString:true*/
 
@@ -308,7 +307,7 @@ function extend(a, b, thisArg) {
   return a;
 }
 
-module.exports = {
+export default {
   isArray: isArray,
   isArrayBuffer: isArrayBuffer,
   isFormData: isFormData,

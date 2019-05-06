@@ -1,7 +1,7 @@
 /**
  * Created by J.Son on 2019/1/29
  */
-const adapter = require('./wxRequest');
+import adapter from "./wxRequest";
 const DEFAULT_CONTENT_TYPE = 'application/json';
 
 function normalizeHeaderName (headers, normalizedName) {
@@ -44,6 +44,4 @@ const defaults = {
     return status >= 200 && status < 300;
   }
 };
-
-module.exports = exports = defaults;
-module.exports.default = defaults;
+export default defaults;

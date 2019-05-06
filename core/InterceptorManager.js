@@ -47,5 +47,4 @@ class InterceptorManager {
   };
 }
 
-module.exports = exports = InterceptorManager;
-module.exports.default = InterceptorManager;
+export default InterceptorManager
