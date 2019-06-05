@@ -1,6 +1,5 @@
 'use strict';
-
-var utils = require('./../utils');
+import utils from "./../utils";
 
 function encode(val) {
   return encodeURIComponent(val).
