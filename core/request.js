@@ -2,6 +2,7 @@
  * Created by J.Son on 2019/1/29
  */
 import Request from "./RequestFactory";
+import mergeConfig from "./mergeConfig";
 import defaults from "./defaults";
 
 /**
@@ -25,7 +26,7 @@ const request = createInstance(defaults);
 
 // Factory for creating new instances
 request.create = function create (instanceConfig) {
-  return createInstance(Object.assign(request.defaults, instanceConfig));
+  return createInstance(mergeConfig(request.defaults, instanceConfig));
 };
 request.all = function all (promises) {
   return Promise.all(promises);
