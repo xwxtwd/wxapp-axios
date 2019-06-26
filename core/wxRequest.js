@@ -113,7 +113,6 @@ function wxAdapter (config) {
 
       }
     });
-
     if (config.timeout) {
       setTimeout(function () {
         handleTimeout(RequestTask);
